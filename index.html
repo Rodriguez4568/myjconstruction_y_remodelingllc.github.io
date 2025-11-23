@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&J Construction & Remodeling LLC</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #2c3e50;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-color: #ddd;
+        }
+        
+        .dark-mode {
+            --primary-color: #e67e22;
+            --secondary-color: #ecf0f1;
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --header-bg: #1e1e1e;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --border-color: #333;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Evita scroll horizontal */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .control-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .control-btn:hover {
+            background-color: #d35400;
+        }
+        
+        /* Menu Hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('image/playa.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background-color: #d35400;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #fff;
+        }
+        
+        .btn-outline:hover {
+            background-color: #fff;
+            color: #333;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--card-bg);
+            transition: background-color 0.3s;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+        
+        .section-title p {
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            transition: color 0.3s;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: box-shadow 0.3s;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--background-color);
+            transition: background-color 0.3s;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+        
+        .service-content p {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--card-bg);
+            transition: background-color 0.3s;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+        
+        .contact-details p {
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Estilos para mensajes de estado */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 50px 0 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 30px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #bdc3c7;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #34495e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex: 0 0 48%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: left 0.3s ease;
+                box-shadow: 0 5px 10px var(--shadow-color);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+            
+            .footer-column {
+                flex: 0 0 100%;
+            }
+            
+            .controls {
+                margin-top: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .about-text h3 {
+                font-size: 24px;
+            }
+            
+            .service-content h3 {
+                font-size: 20px;
+            }
+            
+            .contact-details h3 {
+                font-size: 18px;
+            }
+            
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 15px;
+            }
+            
+            .social-link {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .social-link img {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 24px;
+            }
+            
+            .about-text h3 {
+                font-size: 22px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .control-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">M&J <span>Construction & Remodeling LLC</span></div>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home" data-key="nav-home">Home</a></li>
+                    <li><a href="#about" data-key="nav-about">About Us</a></li>
+                    <li><a href="#services" data-key="nav-services">Services</a></li>
+                    <li><a href="#projects" data-key="nav-projects">Projects</a></li>
+                    <li><a href="#contact" data-key="nav-contact">Contact</a></li>
+                </ul>
+                <div class="controls">
+                    <button id="theme-toggle" class="control-btn">🌙 Dark Mode</button>
+                    <button id="language-toggle" class="control-btn">🇪🇸</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-key="hero-title">M&J Construction & Remodeling LLC</h1>
+                <p data-key="hero-subtitle">Experience in construction and remodeling. We transform spaces with quality, innovation and commitment.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn" data-key="hero-btn-quote">Request Quote</a>
+                    <a href="#projects" class="btn btn-outline" data-key="hero-btn-projects">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-key="about-title">About Us</h2>
+                <p data-key="about-subtitle">We specialize in transforming spaces with quality, innovation and commitment.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-key="about-heading">Our Experience and Commitment</h3>
+                    <p data-key="about-text1">We are dedicated to offering the highest quality construction and remodeling services. Our team of highly qualified professionals works with passion and dedication to turn your ideas into reality.</p>
+                    <p data-key="about-text2">We believe that every project is unique and deserves personalized attention. That's why we strive to understand your needs and expectations to offer you solutions that exceed your expectations.</p>
+                    <a href="#contact" class="btn" data-key="about-btn">Contact Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="image/myj2.jpg" alt="Construction team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-key="services-title">Our Services</h2>
+                <p data-key="services-subtitle">We offer a wide range of construction and remodeling services to meet all your needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="image/casa.jpg" alt="Residential construction">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-key="service1-title">Residential Construction</h3>
+                        <p data-key="service1-desc">We design and build homes that adapt to your lifestyle and needs, using the highest quality materials.</p>
+                        <a href="#contact" class="btn" data-key="service-btn">More Information</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="image/remodelacion.jpg" alt="Remodeling">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-key="service2-title">Remodeling</h3>
+                        <p data-key="service2-desc">We transform your existing spaces to give them a new look and functionality, improving the aesthetics and value of your property.</p>
+                        <a href="#contact" class="btn" data-key="service-btn">More Information</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="image/interiores.jpg" alt="Interior design">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-key="service3-title">Interior Design</h3>
+                        <p data-key="service3-desc">We create unique and functional environments that reflect your personality and adapt to your way of life.</p>
+                        <a href="#contact" class="btn" data-key="service-btn">More Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-key="contact-title">Talk to Us</h2>
+                <p data-key="contact-subtitle">Contact us for a free consultation and let's start working on your project.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            📍
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-key="contact-address-title">Address</h3>
+                            <p>Seattle, Washington, USA</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            📞
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-key="contact-phone-title">Phone</h3>
+                            <p>(360) 296-5541</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            ✉️
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-key="contact-email-title">Email</h3>
+                            <p>myjconstructionwa@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            ⏰
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-key="contact-hours-title">Business Hours</h3>
+                            <p data-key="contact-hours-week">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                            <p data-key="contact-hours-sat">Saturdays: 9:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                    <!-- Social Media Section -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            🔗
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-key="contact-social-title">Follow us on Social Media</h3>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/people/MJ-Construcci%C3%B3n-y-Remodelaci%C3%B3n-LLC/61565578553972/" target="_blank" class="social-link" title="Facebook">
+                                    <img src="image/facebook.png" alt="Facebook" style="width: 20px; height: 20px;">
+                                </a>
+                                <a href="https://www.tiktok.com/@2rodriguz" target="_blank" class="social-link" title="TikTok">
+                                    <img src="image/tikTok.png" alt="TikTok" style="width: 20px; height: 20px;">
+                                </a>
+                                <a href="https://wa.me/13602965541" target="_blank" class="social-link" title="WhatsApp">
+                                    <img src="image/whatsapp.png" alt="WhatsApp" style="width: 20px; height: 20px;">
+                                </a>
+                                <a href="https://www.instagram.com/rodrigz9625/" target="_blank" class="social-link" title="Instagram">
+                                    <img src="image/instagram.png" alt="Instagram" style="width: 20px; height: 20px;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <!-- Status messages -->
+                    <div id="success-alert" class="alert alert-success" style="display: none;">
+                        <span data-key="form-success">Message sent successfully! We will contact you soon.</span>
+                    </div>
+                    <div id="error-alert" class="alert alert-error" style="display: none;">
+                        <span data-key="form-error">Error sending message. Please try again.</span>
+                    </div>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-key="form-name">Full Name</label>
+                            <input type="text" id="name" name="from_name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-key="form-email">Email</label>
+                            <input type="email" id="email" name="from_email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-key="form-phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" data-key="form-service">Service of Interest</label>
+                            <select id="service" name="service" class="form-control" required>
+                                <option value="" data-key="form-service-default">Select a service</option>
+                                <option value="construccion" data-key="form-service1">Residential Construction</option>
+                                <option value="remodelacion" data-key="form-service2">Remodeling</option>
+                                <option value="diseno" data-key="form-service3">Interior Design</option>
+                                <option value="otros" data-key="form-service4">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-key="form-message">Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submit-btn" data-key="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-key="footer-title">We Build Your Dreams</h3>
+                    <p data-key="footer-desc">Experience in construction and remodeling. We transform spaces with quality, innovation and commitment.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/MJ-Construcci%C3%B3n-y-Remodelaci%C3%B3n-LLC/61565578553972/" target="_blank" class="social-link" title="Facebook">
+                            <img src="image/facebook.png" alt="Facebook" style="width: 50px; height: 50px;">
+                        </a>
+                        <a href="https://www.tiktok.com/@2rodriguz" target="_blank" class="social-link" title="TikTok">
+                            <img src="image/tikTok.png" alt="TikTok" style="width: 50px; height: 50px;">
+                        </a>
+                        <a href="https://wa.me/13602965541" target="_blank" class="social-link" title="WhatsApp">
+                            <img src="image/whatsapp.png" alt="WhatsApp" style="width: 50px; height: 50px;">
+                        </a>
+                        <a href="https://www.instagram.com/rodrigz9625/" target="_blank" class="social-link" title="Instagram">
+                            <img src="image/instagram.png" alt="Instagram" style="width: 50px; height: 50px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 data-key="footer-links">Quick Links</h3>
+                    <a href="#home" data-key="nav-home">Home</a>
+                    <a href="#about" data-key="nav-about">About Us</a>
+                    <a href="#services" data-key="nav-services">Services</a>
+                    <a href="#projects" data-key="nav-projects">Projects</a>
+                    <a href="#contact" data-key="nav-contact">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3 data-key="footer-services">Services</h3>
+                    <a href="#services" data-key="service1-title">Residential Construction</a>
+                    <a href="#services" data-key="service2-title">Remodeling</a>
+                    <a href="#services" data-key="service3-title">Interior Design</a>
+                    <a href="#services" data-key="footer-service4">Consulting</a>
+                </div>
+                <div class="footer-column">
+                    <h3 data-key="footer-contact">Contact</h3>
+                    <p>📍 Seattle, Washington, USA</p>
+                    <p>📞 (360) 296-5541</p>
+                    <p>✉️ myjconstructionwa@gmail.com</p>
+                    <p>⏰ <span data-key="contact-hours-week">Monday - Friday: 8:00 AM - 6:00 PM</span></p>
+                    <p>⏰ <span data-key="contact-hours-sat">Saturdays: 9:00 AM - 1:00 PM</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p data-key="footer-copyright">&copy; 2023 We Build Your Dreams. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome para iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Inicializar EmailJS
+        (function() {
+            emailjs.init("8ST2j8rg6z5aebo5b");
+        })();
+
+        // Menu hamburguesa
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const successAlert = document.getElementById('success-alert');
+            const errorAlert = document.getElementById('error-alert');
+            
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLanguage === 'en' ? 'Sending...' : 'Enviando...';
+            
+            // ✅ SERVICE ID CORREGIDO
+            emailjs.sendForm('service_ov2qf42', 'template_1w9woz7', this)
+                .then(function() {
+                    successAlert.style.display = 'block';
+                    document.getElementById('contact-form').reset();
+                    submitBtn.textContent = currentLanguage === 'en' ? 'Message Sent ✓' : 'Mensaje Enviado ✓';
+                    
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = currentLanguage === 'en' ? 'Send Message' : 'Enviar Mensaje';
+                    }, 3000);
+                }, function(error) {
+                    errorAlert.style.display = 'block';
+                    console.error('Error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = currentLanguage === 'en' ? 'Send Message' : 'Enviar Mensaje';
+                });
+        });
+
+        // Language and Theme Functionality
+        const content = {
+            en: {
+                // Navigation
+                "nav-home": "Home",
+                "nav-about": "About Us",
+                "nav-services": "Services",
+                "nav-projects": "Projects",
+                "nav-contact": "Contact",
+                
+                // Hero Section
+                "hero-title": "M&J Construction & Remodeling LLC",
+                "hero-subtitle": "Experience in construction and remodeling. We transform spaces with quality, innovation and commitment.",
+                "hero-btn-quote": "Request Quote",
+                "hero-btn-projects": "View Projects",
+                
+                // About Section
+                "about-title": "About Us",
+                "about-subtitle": "We specialize in transforming spaces with quality, innovation and commitment.",
+                "about-heading": "Our Experience and Commitment",
+                "about-text1": "We are dedicated to offering the highest quality construction and remodeling services. Our team of highly qualified professionals works with passion and dedication to turn your ideas into reality.",
+                "about-text2": "We believe that every project is unique and deserves personalized attention. That's why we strive to understand your needs and expectations to offer you solutions that exceed your expectations.",
+                "about-btn": "Contact Us",
+                
+                // Services Section
+                "services-title": "Our Services",
+                "services-subtitle": "We offer a wide range of construction and remodeling services to meet all your needs.",
+                "service1-title": "Residential Construction",
+                "service1-desc": "We design and build homes that adapt to your lifestyle and needs, using the highest quality materials.",
+                "service2-title": "Remodeling",
+                "service2-desc": "We transform your existing spaces to give them a new look and functionality, improving the aesthetics and value of your property.",
+                "service3-title": "Interior Design",
+                "service3-desc": "We create unique and functional environments that reflect your personality and adapt to your way of life.",
+                "service-btn": "More Information",
+                
+                // Contact Section
+                "contact-title": "Talk to Us",
+                "contact-subtitle": "Contact us for a free consultation and let's start working on your project.",
+                "contact-address-title": "Address",
+                "contact-phone-title": "Phone",
+                "contact-email-title": "Email",
+                "contact-hours-title": "Business Hours",
+                "contact-hours-week": "Monday - Friday: 8:00 AM - 6:00 PM",
+                "contact-hours-sat": "Saturdays: 9:00 AM - 1:00 PM",
+                "contact-social-title": "Follow us on Social Media",
+                
+                // Form
+                "form-name": "Full Name",
+                "form-email": "Email",
+                "form-phone": "Phone",
+                "form-service": "Service of Interest",
+                "form-service-default": "Select a service",
+                "form-service1": "Residential Construction",
+                "form-service2": "Remodeling",
+                "form-service3": "Interior Design",
+                "form-service4": "Others",
+                "form-message": "Message",
+                "form-submit": "Send Message",
+                "form-success": "Message sent successfully! We will contact you soon.",
+                "form-error": "Error sending message. Please try again.",
+                
+                // Footer
+                "footer-title": "We Build Your Dreams",
+                "footer-desc": "Experience in construction and remodeling. We transform spaces with quality, innovation and commitment.",
+                "footer-links": "Quick Links",
+                "footer-services": "Services",
+                "footer-service4": "Consulting",
+                "footer-contact": "Contact",
+                "footer-copyright": "&copy; 2023 We Build Your Dreams. All rights reserved."
+            },
+            es: {
+                // Navigation
+                "nav-home": "Inicio",
+                "nav-about": "Nosotros",
+                "nav-services": "Servicios",
+                "nav-projects": "Proyectos",
+                "nav-contact": "Contacto",
+                
+                // Hero Section
+                "hero-title": "M&J Construction & Remodeling LLC",
+                "hero-subtitle": "Experiencia en construcción y remodelación. Transformamos espacios con calidad, innovación y compromiso.",
+                "hero-btn-quote": "Solicitar Cotización",
+                "hero-btn-projects": "Ver Proyectos",
+                
+                // About Section
+                "about-title": "Sobre Nosotros",
+                "about-subtitle": "Nos especializamos en transformar espacios con calidad, innovación y compromiso.",
+                "about-heading": "Nuestra Experiencia y Compromiso",
+                "about-text1": "Nos dedicado a ofrecer servicios de construcción y remodelación de la más alta calidad. Nuestro equipo de profesionales altamente capacitados trabaja con pasión y dedicación para convertir tus ideas en realidad.",
+                "about-text2": "Creemos que cada proyecto es único y merece atención personalizada. Por eso, nos esforzamos por entender tus necesidades y expectativas para ofrecerte soluciones que superen tus expectativas.",
+                "about-btn": "Contáctanos",
+                
+                // Services Section
+                "services-title": "Nuestros Servicios",
+                "services-subtitle": "Ofrecemos una amplia gama de servicios de construcción y remodelación para satisfacer todas tus necesidades.",
+                "service1-title": "Construcción Residencial",
+                "service1-desc": "Diseñamos y construimos hogares que se adaptan a tu estilo de vida y necesidades, utilizando materiales de la más alta calidad.",
+                "service2-title": "Remodelación",
+                "service2-desc": "Transformamos tus espacios existentes para darles un nuevo look y funcionalidad, mejorando la estética y el valor de tu propiedad.",
+                "service3-title": "Diseño de Interiores",
+                "service3-desc": "Creamos ambientes únicos y funcionales que reflejan tu personalidad y se adaptan a tu forma de vida.",
+                "service-btn": "Más Información",
+                
+                // Contact Section
+                "contact-title": "Habla con Nosotros",
+                "contact-subtitle": "Contáctanos para una consulta gratuita y comencemos a trabajar en tu proyecto.",
+                "contact-address-title": "Dirección",
+                "contact-phone-title": "Teléfono",
+                "contact-email-title": "Email",
+                "contact-hours-title": "Horario de Atención",
+                "contact-hours-week": "Lunes - Viernes: 8:00 AM - 6:00 PM",
+                "contact-hours-sat": "Sábados: 9:00 AM - 1:00 PM",
+                "contact-social-title": "Síguenos en Redes Sociales",
+                
+                // Form
+                "form-name": "Nombre Completo",
+                "form-email": "Correo Electrónico",
+                "form-phone": "Teléfono",
+                "form-service": "Servicio de Interés",
+                "form-service-default": "Selecciona un servicio",
+                "form-service1": "Construcción Residencial",
+                "form-service2": "Remodelación",
+                "form-service3": "Diseño de Interiores",
+                "form-service4": "Otros",
+                "form-message": "Mensaje",
+                "form-submit": "Enviar Mensaje",
+                "form-success": "¡Mensaje enviado con éxito! Te contactaremos pronto.",
+                "form-error": "Error al enviar el mensaje. Por favor, intenta nuevamente.",
+                
+                // Footer
+                "footer-title": "Construimos Tus Sueños",
+                "footer-desc": "experiencia en construcción y remodelación. Transformamos espacios con calidad, innovación y compromiso.",
+                "footer-links": "Enlaces Rápidos",
+                "footer-services": "Servicios",
+                "footer-service4": "Consultoría",
+                "footer-contact": "Contacto",
+                "footer-copyright": "&copy; 2023 Construimos Tus Sueños. Todos los derechos reservados."
+            }
+        };
+
+        // DOM elements
+        const themeToggle = document.getElementById('theme-toggle');
+        const languageToggle = document.getElementById('language-toggle');
+        const body = document.body;
+
+        // Current language state
+        let currentLanguage = 'en';
+        let isDarkMode = false;
+
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            body.classList.toggle('dark-mode');
+            updateThemeButtonText();
+        });
+
+        // Language toggle functionality
+        languageToggle.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+            updateContent();
+            updateLanguageButtonText();
+        });
+
+        // Update all text content based on current language
+        function updateContent() {
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (content[currentLanguage][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = content[currentLanguage][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = content[currentLanguage][key];
+                    } else {
+                        element.innerHTML = content[currentLanguage][key];
+                    }
+                }
+            });
+        }
+
+        // Update theme button text based on current theme
+        function updateThemeButtonText() {
+            themeToggle.textContent = isDarkMode ? 
+                (currentLanguage === 'en' ? '☀️ Light Mode' : '☀️ Modo Claro') : 
+                (currentLanguage === 'en' ? '🌙 Dark Mode' : '🌙 Modo Oscuro');
+        }
+
+        // Update language button text
+        function updateLanguageButtonText() {
+            languageToggle.textContent = currentLanguage === 'en' ? '🇪🇸' : '🇺🇸';
+        }
+
+        // Initialize the application
+        function init() {
+            updateContent();
+            updateThemeButtonText();
+            updateLanguageButtonText();
+        }
+
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
